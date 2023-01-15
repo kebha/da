@@ -1,4 +1,3 @@
-
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -15,13 +14,16 @@ namespace API.Services
 		{
 			_key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
 		}
+
 		public string CreateToken(AppUser user)
 		{
-			var claims = new List<Claim>{
-				new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
+			var claims = new List<Claim>
+			{
+				new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
+				new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
 			};
 
-			var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha256Signature);
+			var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 
 			var tokenDescriptor = new SecurityTokenDescriptor
 			{
