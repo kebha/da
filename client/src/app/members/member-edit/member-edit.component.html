@@ -3,7 +3,7 @@
     <h1>Your profile</h1>
   </div>
   <div class="col-8">
-    <div class="alert alert-info" *ngIf="editForm.dirty">
+    <div class="alert alert-info pb-0" *ngIf="editForm.dirty">
       <p>
         <strong>Information: </strong>You have made changes. Any unsaved changes
         will be lost
@@ -13,7 +13,7 @@
   <div class="col-4">
     <div class="card">
       <img
-        src="{{ member.photoUrl || '.assets/user.png' }}"
+        src="{{ member.photoUrl || './assets/user.png' }}"
         alt="{{ member.knownAs }}"
         class="card-img-top img-thumbnail"
       />
@@ -28,17 +28,17 @@
         </div>
         <div>
           <strong>Last active:</strong>
-          <p>{{ member.lastActive + "Z" | timeago }}</p>
+          <p>{{ member.lastActive | timeago }}</p>
         </div>
         <div>
           <strong>Member since:</strong>
-          <p>{{ member.created | date : "dd MMM yyy" }}</p>
+          <p>{{ member.created | date : "dd MMM yyyy" }}</p>
         </div>
       </div>
       <div class="card-footer">
         <button
-          [disabled]="!editForm.dirty"
           type="submit"
+          [disabled]="!editForm.dirty"
           form="editForm"
           class="btn btn-success col-12"
         >
@@ -47,6 +47,7 @@
       </div>
     </div>
   </div>
+
   <div class="col-8">
     <tabset class="member-tabset">
       <tab heading="About {{ member.knownAs }}">
@@ -79,14 +80,14 @@
               type="text"
               [(ngModel)]="member.city"
               name="city"
-              class="form-conttrol mx-2"
+              class="form-control mx-2"
             />
-            <label for="city">Country: </label>
+            <label for="country">Country: </label>
             <input
               type="text"
               [(ngModel)]="member.country"
               name="country"
-              class="form-conttrol mx-2"
+              class="form-control mx-2"
             />
           </div>
         </form>
