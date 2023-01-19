@@ -23,7 +23,7 @@ export class AdminService {
     );
   }
 
-  getPhotoForApproval() {
+  getPhotosForApproval() {
     return this.http.get<Photo[]>(this.baseUrl + 'admin/photos-to-moderate');
   }
 

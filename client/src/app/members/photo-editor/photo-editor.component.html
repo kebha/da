@@ -7,7 +7,7 @@
       [class.not-approved]="!photo.isApproved"
     />
     <div class="text-center img-text" *ngIf="!photo.isApproved">
-      <span class="text-danger">{{ photo.id }}</span>
+      <span class="text-danger">Awaiting approval</span>
     </div>
     <div class="text-center">
       <button
