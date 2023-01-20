@@ -19,7 +19,7 @@ if (builder.Environment.IsDevelopment())
 	connString = builder.Configuration.GetConnectionString("DefaultConnection");
 else
 {
-	// Use connection string provided at runtime by FlyIO
+	// Use connection string provided at runtime by FlyIO.
 	var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
 	// Parse connection URL to connection string for Npgsql
@@ -70,7 +70,7 @@ try
 	var userManager = services.GetRequiredService<UserManager<AppUser>>();
 	var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
 	await context.Database.MigrateAsync();
-	await Seed.ClearConnection(context);
+	await Seed.ClearConnections(context);
 	await Seed.SeedUsers(userManager, roleManager);
 }
 catch (Exception ex)

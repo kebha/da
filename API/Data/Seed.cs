@@ -9,7 +9,7 @@ namespace API.Data
 {
 	public class Seed
 	{
-		public static async Task ClearConnection(DataContext context)
+		public static async Task ClearConnections(DataContext context)
 		{
 			context.Connections.RemoveRange(context.Connections);
 			await context.SaveChangesAsync();
@@ -40,7 +40,6 @@ namespace API.Data
 
 			foreach (var user in users)
 			{
-				user.Photos.First().IsApproved = true;
 				user.UserName = user.UserName.ToLower();
 				user.Created = DateTime.SpecifyKind(user.Created, DateTimeKind.Utc);
 				user.LastActive = DateTime.SpecifyKind(user.LastActive, DateTimeKind.Utc);

@@ -3,10 +3,10 @@ WORKDIR /app
 EXPOSE 8080
 
 # copy csproj and restore as distinct layers
-COPY *csproj ./
+COPY *.csproj ./
 RUN dotnet restore
 
-#copy everythin else and build
+# copy everything else and build
 COPY . ./
 RUN dotnet publish -c Release -o out
 
